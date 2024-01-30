@@ -90,7 +90,7 @@ class User
     {
         $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
         $sql = "UPDATE user SET fullname = :fullname, email = :email, password = :password WHERE id = :id";
-        $sql_exe = $this->$pdo->prepare($sql);
+        $sql_exe = $pdo->prepare($sql);
         $sql_exe->execute([
             'fullname' => htmlspecialchars($fullname),
             'email' => htmlspecialchars($email),

@@ -48,7 +48,7 @@ class User
     {
         $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
         $sql = "SELECT * FROM user WHERE email = :email";
-        $sql_exe = $this->$pdo->prepare($sql);
+        $sql_exe = $pdo->prepare($sql);
         $sql_exe->execute([
             'email' => $email,
         ]);
@@ -67,7 +67,7 @@ class User
         if (!$this->verifUser($email)) {
             $sql = "INSERT INTO user (fullname, email, password, role)
                     VALUES (:fullname, :email, :password, :role)";
-            $sql_exe = $this->$pdo->prepare($sql);
+            $sql_exe = $pdo->prepare($sql);
             $sql_exe->execute([
                 'fullname' => htmlspecialchars($fullname),
                 'email' => htmlspecialchars($email),

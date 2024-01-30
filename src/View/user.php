@@ -17,4 +17,7 @@ $allUsers = $foundUser->findAll();
 foreach ($allUsers as $user){
     echo implode(', ', $user) . "<br>";
 }
+
+$userManager = new User();
+$userManager->create('axel2', "axel@fr.fr", "test");
 ?>

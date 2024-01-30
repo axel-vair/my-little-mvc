@@ -30,11 +30,11 @@ if (isset($_GET['id_product']) && isset($_GET['product_type'])){
        echo "<p>Quantity: " . $product->getQuantity() . "</p>";
        echo "<p>Prix: " . $product->getPrice() . "</p>";
    }else{
-       echo "Le produit demandé n'est pas disponible";
+       echo "Le produit demandé n'existe pas";
    }
 
 }else{
-    echo "Le produit demandé n'existe pas ";
+    echo "Veuillez renseigner un ID et/ou un type de produit !";
 }
 
 

@@ -4,7 +4,6 @@ require_once "../../vendor/autoload.php";
 
 use App\Model\Clothing;
 use App\Model\Electronic;
-use App\Model\Product;
 
 if (isset($_GET['id_product']) && isset($_GET['product_type'])){
    $id_product = $_GET['id_product'];
@@ -35,7 +34,7 @@ if (isset($_GET['id_product']) && isset($_GET['product_type'])){
    }
 
 }else{
-    echo "Le produit demandé n'est pas disponible";
+    echo "Le produit demandé n'existe pas ";
 }
 
 

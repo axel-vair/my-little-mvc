@@ -12,31 +12,95 @@ class User
     private ?string $password = null;
     private ?array $role = [];
 
-    public function findOneById($id)
+    public function findOneById($id): ?User
     {
         $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
         $sql = "SELECT * FROM user WHERE id = :id";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(':id', $id);
         $statement->execute();
-        $user = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $user;
+        $userData = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($userData) {
+            $user = new User();
+            $user->setId($userData['id'])
+                ->setFullname($userData['fullname'])
+                ->setEmail($userData['email'])
+                ->setRole([$userData['role']]);
+            return $user;
+        } else {
+            return null;
+        }
     }
 
 
     public function findAll()
     {
+        $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
+        $sql = "SELECT * FROM user";
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $users = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $users;
+    }
+
+    public function verifUser($email)
+    {
+        $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
+        $sql = "SELECT * FROM user WHERE email = :email";
+        $sql_exe = $this->$pdo->prepare($sql);
+        $sql_exe->execute([
+            'email' => $email,
+        ]);
+        $results = $sql_exe->fetch(PDO::FETCH_ASSOC);
+        if ($results) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function create($fullname, $email, $password)
+    {
+        $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
+        $role = "customer";
+        if (!$this->verifUser($email)) {
+            $sql = "INSERT INTO user (fullname, email, password, role)
+                    VALUES (:fullname, :email, :password, :role)";
+            $sql_exe = $this->$pdo->prepare($sql);
+            $sql_exe->execute([
+                'fullname' => htmlspecialchars($fullname),
+                'email' => htmlspecialchars($email),
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+                'role' => htmlspecialchars($role),
+            ]);
+
+            if ($sql_exe) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
 
     }
 
-    public function create()
+    public function update($fullname, $email, $password)
     {
-
-    }
-
-    public function update()
-    {
-
+        $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
+        $sql = "UPDATE user SET fullname = :fullname, email = :email, password = :password WHERE id = :id";
+        $sql_exe = $this->$pdo->prepare($sql);
+        $sql_exe->execute([
+            'fullname' => htmlspecialchars($fullname),
+            'email' => htmlspecialchars($email),
+            'password' => htmlspecialchars($password),
+        ]);
+        if ($sql_exe) {
+            echo json_encode(['response' => 'ok', 'reussite' => 'Utilisateur modifié']);
+        } else {
+            echo json_encode(['response' => 'not ok', 'echoue' => 'Problème enregistrement']);
+        }
     }
 
     public function getId(): ?int

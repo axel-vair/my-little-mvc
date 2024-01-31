@@ -7,5 +7,4 @@ use App\Model\Abstract\AbstractProduct;
 
 class Product extends AbstractProduct
 {
-
 }

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f5a5872ec1ed84ec6708cca9b5afbeb",
+    "content-hash": "2dc9f6bfbfa173b554401cb61ec3491f",
     "packages": [
         {
             "name": "altorouter/altorouter",
-            "version": "2.0.2",
+            "version": "2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dannyvankooten/AltoRouter.git",
-                "reference": "f6fede4f94ced7c22ba63a9b8af0bf2dc38e3cb2"
+                "reference": "7e2b48db00a7ec1174424fc5b16630a58bff377c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dannyvankooten/AltoRouter/zipball/f6fede4f94ced7c22ba63a9b8af0bf2dc38e3cb2",
-                "reference": "f6fede4f94ced7c22ba63a9b8af0bf2dc38e3cb2",
+                "url": "https://api.github.com/repos/dannyvankooten/AltoRouter/zipball/7e2b48db00a7ec1174424fc5b16630a58bff377c",
+                "reference": "7e2b48db00a7ec1174424fc5b16630a58bff377c",
                 "shasum": ""
             },
             "require": {
@@ -62,9 +62,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dannyvankooten/AltoRouter/issues",
-                "source": "https://github.com/dannyvankooten/AltoRouter/tree/2.0.2"
+                "source": "https://github.com/dannyvankooten/AltoRouter/tree/2.0"
             },
-            "time": "2020-03-09T08:34:59+00:00"
+            "time": "2019-11-10T19:33:12+00:00"
         }
     ],
     "packages-dev": [],

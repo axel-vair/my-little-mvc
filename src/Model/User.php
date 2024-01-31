@@ -83,7 +83,6 @@ class User
         } else {
             return false;
         }
-
     }
 
     public function update($fullname, $email, $password)

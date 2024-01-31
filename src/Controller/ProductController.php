@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Controller;
+use AllowDynamicProperties;
 use App\Model\Product;
 
-class ProductController
+#[AllowDynamicProperties] class ProductController
 {
     public function __construct(){
         $this->productModel = new Product();
@@ -14,7 +15,8 @@ class ProductController
     }
 
     public function showPage(){
+        $owner = 'Axel';
         $products = $this->getAllProducts();
-        require_once __DIR__ . './shop.php';
+        require_once __DIR__ . '/../View/shop.php';
     }
 }

@@ -19,5 +19,5 @@ foreach ($allUsers as $user){
 }
 
 $userManager = new User();
-$userManager->create('axel2', "axel@fr.fr", "test");
+$userManager->create('axel3', "axe3l@fr.fr", "test");
 ?>

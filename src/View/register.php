@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -12,21 +8,37 @@
     <title>Inscription</title>
 </head>
 <body>
-    <form method="POST">
+    <form method="POST" action="" name="register-form">
         <label for="fullname">
             Nom complet
-            <input type="text" name="fullname"/>
+            <input type="text" name="fullname" required/>
         </label>
 
         <label for="email">
             Email:
-            <input type="email" name="email"/>
+            <input type="email" name="email" required/>
         </label>
 
         <label for="password">
             Mot de passe
-            <input type="password" name="password"/>
+            <input type="password" name="password" required/>
         </label>
+
+        <button type="submit">Je m'inscris</button>
     </form>
 </body>
 </html>
+<?php
+
+require_once '../../vendor/autoload.php';
+use App\Model\User;
+
+if(isset($_POST["fullname"], $_POST["email"], $_POST["password"])) {
+    $fullname = htmlspecialchars($_POST["fullname"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
+
+    $newUser = new User();
+    $newUser->create($fullname, $email, $password);
+}
+?>

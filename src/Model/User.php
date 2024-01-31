@@ -68,13 +68,13 @@ class User
             $sql = "INSERT INTO user (fullname, email, password, role)
                     VALUES (:fullname, :email, :password, :role)";
             $sql_exe = $pdo->prepare($sql);
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $sql_exe->execute([
-                'fullname' => htmlspecialchars($fullname),
-                'email' => htmlspecialchars($email),
-                'password' => password_hash($password, PASSWORD_DEFAULT),
-                'role' => htmlspecialchars($role),
+                'fullname' => $fullname,
+                'email' => $email,
+                'password' => $hashedPassword,
+                'role' => $role,
             ]);
-
             if ($sql_exe) {
                 return true;
             } else {

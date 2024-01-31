@@ -13,6 +13,7 @@ $router = new AltoRouter();
 $router->setBasePath(MY_LITTLE_MVC_DIR);
 
 include __DIR__ . '/src/Route/shop-route.php';
+include __DIR__ . '/src/Route/register-route.php';
 
 
 $match = $router->match();

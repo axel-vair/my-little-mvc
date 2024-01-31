@@ -30,7 +30,6 @@
 </html>
 <?php
 
-require_once '../../vendor/autoload.php';
 use App\Model\User;
 
 if(isset($_POST["fullname"], $_POST["email"], $_POST["password"])) {

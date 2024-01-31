@@ -11,7 +11,7 @@ foreach ($products as $getProduct){
 
     echo "Nom: " . $getProduct->getName() . " ";
     echo "Prix: " . $getProduct->getPrice() . " ";
-    echo "Description: " . $getProduct->getDescription() . "";
+    echo "Description: " . $getProduct->xgetDescription() . "";
     echo "Quantité: " . $getProduct->getQuantity() . " ";
     echo "</pre>";
 

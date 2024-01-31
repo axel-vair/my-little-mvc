@@ -23,6 +23,18 @@ foreach ($products as $getProduct) {
     <title>Document</title>
 </head>
 <body>
-    <h2>Welcome to Home Page, <b><?= $owner ?></b></h2>
+<h2>Welcome to Shop Page, <b><?= $owner ?></b></h2>
+    <h1>Produits</h1>
+    <ul>
+    <?php foreach ($products as $product): ?>
+<li>
+    <h2><?= $product->getName() ?></h2>
+    <p>Description: <?= $product->xgetDescription() ?></p>
+    <p>Price: <?= $product->getPrice() ?></p>
+    <p>Quantity: <?= $product->getQuantity() ?></p>
+</li>
+<?php endforeach; ?>
+</ul>
+
 </body>
 </html>

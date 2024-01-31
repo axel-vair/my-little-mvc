@@ -15,11 +15,6 @@ $router->setBasePath(MY_LITTLE_MVC_DIR);
 include __DIR__ . '/src/Route/shop-route.php';
 
 
-
-
-
-
-
 $match = $router->match();
 
 if(is_array($match) && is_callable($match['target'])) {

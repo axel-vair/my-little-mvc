@@ -33,7 +33,6 @@ class User
         }
     }
 
-
     public function findAll()
     {
         $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
@@ -100,6 +99,10 @@ class User
         } else {
             echo json_encode(['response' => 'not ok', 'echoue' => 'Problème enregistrement']);
         }
+    }
+
+    public static function isLoggedIn(){
+        return isset($_SESSION['user']);
     }
 
     public function connection($email, $password)

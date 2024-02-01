@@ -102,6 +102,39 @@ class User
         }
     }
 
+    public function connection($email, $password)
+    {
+        $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
+        $sql = "SELECT * 
+                FROM user
+                WHERE email = :email";
+
+        $sql_exe = $pdo->prepare($sql);
+        $sql_exe->execute([
+            'email' => $email
+        ]);
+
+        $user = $sql_exe->fetch(PDO::FETCH_ASSOC);
+        if ($user) {
+            $hashed_password = $user['password'];
+            if (password_verify($password, $hashed_password)) {
+                if (!$_SESSION) {
+                    $_SESSION['user'] = $user;
+                }
+                header('Location: /my-little-mvc/products');
+                return true;
+            } else {
+                $_SESSION['error'] = "Les identifiants fournis ne correspondent à aucun utilisateur";
+                header('Location: /my-little-mvc/login');
+                return false;
+            }
+        } else {
+            $_SESSION['error'] = "Les identifiants fournis ne correspondent à aucun utilisateur";
+            header('Location: /my-little-mvc/login');
+            return false;
+        }
+    }
+
     public function getId(): ?int
     {
         return $this->id;

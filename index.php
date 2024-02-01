@@ -14,7 +14,7 @@ $router->setBasePath(MY_LITTLE_MVC_DIR);
 
 include __DIR__ . '/src/Route/shop-route.php';
 include __DIR__ . '/src/Route/register-route.php';
-
+include __DIR__ . '/src/Route/login-route.php';
 
 $match = $router->match();
 

@@ -9,13 +9,26 @@
 </head>
 <body>
 <h1>Page de profil</h1>
-<?php
-echo "Nom complet: " .  $user['fullname'] . "<br>";
-echo "Email: " . $user['email'] . "<br>";
-echo "Mot de passe: " . $user['password'] . "<br>";
-echo "Role: " . $user['role'];
 
-?>
+<form method="post">
+    <label for="fullname">
+        Nom complet :
+        <input type="text" name="fullname" placeholder="<?= $user['fullname'] ?>">
+    </label>
+
+    <label for="email">
+        Email :
+        <input type="email" name="email" placeholder="<?= $user['email'] ?>">
+    </label>
+
+    <label for="password">
+        Mot de passe :
+        <input type="password" name="password" placeholder="<?= $user['password'] ?>">
+    </label>
+
+    <button type="submit">Modifier mes informations</button>
+</form>
+
 </body>
 </html>
 

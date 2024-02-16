@@ -123,7 +123,7 @@ class User
                 if (!$_SESSION) {
                     $_SESSION['user'] = $user;
                 }
-                header('Location: /my-little-mvc/products');
+                header('Location: /my-little-mvc/shop');
                 return true;
             } else {
                 $_SESSION['error'] = "Les identifiants fournis ne correspondent à aucun utilisateur";

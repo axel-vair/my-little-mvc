@@ -5,7 +5,6 @@ namespace App\Route;
 use App\Controller\LoginController;
 
 $router->map('GET', '/login', function (){
-    echo "Welcome to login page";
     $loginController = new LoginController();
     $loginController->showPage();
 

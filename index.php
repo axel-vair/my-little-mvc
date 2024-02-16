@@ -12,6 +12,7 @@ const MY_LITTLE_MVC_DIR = '/my-little-mvc';
 $router = new AltoRouter();
 $router->setBasePath(MY_LITTLE_MVC_DIR);
 
+include __DIR__ . '/src/Route/home-route.php';
 include __DIR__ . '/src/Route/shop-route.php';
 include __DIR__ . '/src/Route/register-route.php';
 include __DIR__ . '/src/Route/login-route.php';

@@ -3,11 +3,14 @@
 namespace App\Route;
 
 use App\Controller\ProductController;
+use App\Controller\ShopController;
 
 
 $router->map('GET', '/shop', function() {
-    /* require __DIR__ . '/src/View/shop.php'; */
-    echo "Welcome to shop page";
+    $page = $_GET['page'] ?? 1;
+    $shopController = new ShopController();
+    $shopController->index($page);
+
 }, 'home');
 
 $router->map('GET', '/products', function () {

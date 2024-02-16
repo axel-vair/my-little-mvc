@@ -1,16 +1,7 @@
 <?php
+session_start();
+$currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
-/*// Afficher les produits
-foreach ($products as $getProduct) {
-    echo "<pre>";
-    echo "Nom: " . $getProduct->getName() . " ";
-    echo "Prix: " . $getProduct->getPrice() . " ";
-    echo "Description: " . $getProduct->getDescription() . "";
-    echo "Quantité: " . $getProduct->getQuantity() . " ";
-    echo "</pre>";
-
-    echo "<a href='http://localhost/my-little-mvc/src/?id_product=" . $getProduct->getId() . "'>url</a>";
-}*/
 ?>
 
 <!doctype html>
@@ -23,18 +14,28 @@ foreach ($products as $getProduct) {
     <title>Document</title>
 </head>
 <body>
-<h2>Welcome to Shop Page, <b><?= $owner ?></b></h2>
+
+<h2>Welcome to Shop Page, <b><?= $_SESSION['user']['fullname'] ?></b></h2>
     <h1>Produits</h1>
     <ul>
-    <?php foreach ($products as $product): ?>
-<li>
-    <h2><?= $product->getName() ?></h2>
-    <p>Description: <?= $product->xgetDescription() ?></p>
-    <p>Price: <?= $product->getPrice() ?></p>
-    <p>Quantity: <?= $product->getQuantity() ?></p>
-</li>
-<?php endforeach; ?>
+        <?php foreach ($productPaginate['products'] as $product): ?>
+            <li>
+                <h2><?= $product['name'] ?></h2>
+                <p>Description: <?= $product['description'] ?></p>
+                <p>Prix: <?= $product['price'] ?></p>
+                <p>Quantité: <?= $product['quantity'] ?></p>
+            </li>
+        <?php endforeach; ?>
 </ul>
+<div>
+    <?php if ($currentPage > 1): ?>
+        <a href="/my-little-mvc/shop?page=<?= $currentPage - 1 ?>">Page précédente</a>
+    <?php endif; ?>
+
+    <?php if ($currentPage < $productPaginate['totalPages']): ?>
+        <a href="/my-little-mvc/shop?page=<?= $currentPage + 1 ?>">Page suivante</a>
+    <?php endif; ?>
+</div>
 
 </body>
 </html>

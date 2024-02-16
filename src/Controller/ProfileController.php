@@ -14,10 +14,9 @@ class ProfileController
     }
 
     public function showPage(){
-        $user = $this->profile();
-        require __DIR__ . '/../View/profile.php';
-
-        return $user;
+            $user = $_SESSION['user'];
+            $userFromDatabase = $this->user->findOneById($user['id']);
+            require __DIR__ . '/../View/profile.php';
     }
 
     public function profile(){
@@ -28,7 +27,23 @@ class ProfileController
            header('Location: /my-little-mvc/login');
            exit();
        }
+    }
 
+    public function updateProfil(string $fullname, string $email, string $password){
+        if(User::isLoggedIn()){
+            $success = $this->user->update($fullname, $email, $password);
+            if($success){
+                $user = $this->user->findOneById($_SESSION['user']['id']);
+                return ['success', $success, $user];
+
+            }else{
+                return ['success', $success, null];
+            }
+        }else{
+            header('Location: /my-little-mvc/login');
+            exit();
+
+        }
     }
 
 }

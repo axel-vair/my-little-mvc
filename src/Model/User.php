@@ -92,12 +92,14 @@ class User
         $sql_exe->execute([
             'fullname' => htmlspecialchars($fullname),
             'email' => htmlspecialchars($email),
-            'password' => htmlspecialchars($password),
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'id' => $_SESSION['user']['id'], // Utilisez l'identifiant de l'utilisateur connecté
+
         ]);
         if ($sql_exe) {
-            echo json_encode(['response' => 'ok', 'reussite' => 'Utilisateur modifié']);
+            return true;
         } else {
-            echo json_encode(['response' => 'not ok', 'echoue' => 'Problème enregistrement']);
+            return false;
         }
     }
 
@@ -108,10 +110,7 @@ class User
     public function connection($email, $password)
     {
         $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
-        $sql = "SELECT * 
-                FROM user
-                WHERE email = :email";
-
+        $sql = "SELECT * FROM user WHERE email = :email";
         $sql_exe = $pdo->prepare($sql);
         $sql_exe->execute([
             'email' => $email

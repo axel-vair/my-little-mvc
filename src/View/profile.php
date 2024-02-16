@@ -10,20 +10,21 @@
 <body>
 <h1>Page de profil</h1>
 
-<form method="post">
+
+<form method="post" action="/my-little-mvc/profile">
     <label for="fullname">
         Nom complet :
-        <input type="text" name="fullname" placeholder="<?= $user['fullname'] ?>">
+        <input type="text" name="fullname" value="<?= $userFromDatabase->getFullname() ?>">
     </label>
 
     <label for="email">
         Email :
-        <input type="email" name="email" placeholder="<?= $user['email'] ?>">
+        <input type="email" name="email" value="<?= $userFromDatabase->getEmail() ?>">
     </label>
 
     <label for="password">
         Mot de passe :
-        <input type="password" name="password" placeholder="<?= $user['password'] ?>">
+        <input type="password" name="password" value="">
     </label>
 
     <button type="submit">Modifier mes informations</button>
@@ -31,4 +32,3 @@
 
 </body>
 </html>
-

@@ -31,4 +31,14 @@ class AuthenticationController{
         require_once __DIR__ . '/../View/register.php';
 
     }
+
+    public function logout(){
+        session_start();
+        session_unset();
+        session_destroy();
+        header('Location: login');
+        exit();
+    }
+
+
 }

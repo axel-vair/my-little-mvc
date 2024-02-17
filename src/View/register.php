@@ -38,7 +38,7 @@ if(isset($_POST["fullname"], $_POST["email"], $_POST["password"])) {
     <form method="POST" action="" name="register-form">
         <div class="form-group">
             <label for="fullname" class="form-label mt-4">Nom complet</label>
-            <input type="text" name="fullname" class="form-control"placeholder="Jean Dupont">
+            <input type="text" name="fullname" class="form-control" placeholder="Jean Dupont">
         </div>
 
         <div class="form-group">

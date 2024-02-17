@@ -17,6 +17,8 @@ include __DIR__ . '/src/Route/shop-route.php';
 include __DIR__ . '/src/Route/register-route.php';
 include __DIR__ . '/src/Route/login-route.php';
 include __DIR__ . '/src/Route/profile-route.php';
+include __DIR__ . '/src/Route/logout-route.php';
+
 
 
 $match = $router->match();

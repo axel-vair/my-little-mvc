@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!$_SESSION) {
     header("location: login");
 }
@@ -23,7 +22,7 @@ require_once "src/Template/__header.html";
 </head>
 <body>
 <div class="d-flex justify-center-content container mt-2 mb-3">
-    <h2><b><?= $_SESSION['user']['fullname'] ?></b>, retrouvez tous nos produits</h2>
+    <h2><b>Retrouvez tous nos produits</h2>
 </div>
 
 <section class="d-flex container">
@@ -45,9 +44,10 @@ require_once "src/Template/__header.html";
                     <p><?= $product['price'] ?>€</p></li>
                 <li class="list-group-item"><h5>Quantité:</h5>
                     <p><?= $product['quantity'] ?></p></li>
+
             </ul>
             <div class="card-footer text-muted">
-                <a href="#" class="card-link">Card link</a></div>
+                <a href="product/<?= $product['id']; ?>" class="card-link btn btn-primary">Voir le produit</a>
         </div>
     <?php endforeach; ?>
 

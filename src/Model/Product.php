@@ -30,4 +30,6 @@ class Product extends AbstractProduct
             'totalPages' => $totalPages
             ];
     }
+
+
 }

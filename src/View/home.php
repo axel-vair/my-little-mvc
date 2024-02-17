@@ -1,5 +1,6 @@
 <?php
 require_once "src/Template/__header.html";
+session_start();
 
 ?>
 

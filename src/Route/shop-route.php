@@ -19,3 +19,8 @@ $router->map('GET', '/products', function () {
 });
 
 
+$router->map('GET', '/product/[i:id]', function ($id) {
+    $shopController = new ShopController();
+    $shopController->showProduct($id);
+});
+

@@ -61,6 +61,9 @@ class User
 
     public function create($fullname, $email, $password)
     {
+        if (empty($email) || empty($password)) {
+            return false;
+        }
         $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
         $role = "customer";
         if (!$this->verifUser($email)) {

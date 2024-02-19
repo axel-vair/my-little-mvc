@@ -26,6 +26,8 @@ abstract class AbstractProduct
 
     protected ?\DateTime $updatedAt = null;
 
+    protected ?string $type = null;
+
     public function __construct(
         ?int       $id = null,
         ?string    $name = null,
@@ -35,7 +37,8 @@ abstract class AbstractProduct
         ?int       $quantity = null,
         ?int       $category_id = null,
         ?\DateTime $createdAt = null,
-        ?\DateTime $updatedAt = null
+        ?\DateTime $updatedAt = null,
+        ?string $type = null
     )
     {
         $this->id = $id;
@@ -47,6 +50,18 @@ abstract class AbstractProduct
         $this->category_id = $category_id;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
+        $this->type = $type;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): AbstractProduct
+    {
+        $this->type = $type;
+        return $this;
     }
 
     public function getId(): ?int
@@ -198,6 +213,22 @@ abstract class AbstractProduct
 
         return false;
     }
+
+        public function findOneByType(string $productType)
+        {
+            $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
+            $sql = "SELECT p.* FROM product p ";
+
+            if ($productType === 'electronic') {
+                $sql .= "JOIN electronic e ON p.id = e.product_id";
+            } elseif ($productType === 'clothing') {
+                $sql .= "JOIN clothing c ON p.id = c.product_id";
+            }
+            $stmt = $pdo->query($sql);
+            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $products;
+        }
 
     public function findAll(): array
     {

@@ -24,3 +24,8 @@ $router->map('GET', '/product/[i:id]', function ($id) {
     $shopController->showProduct($id);
 });
 
+$router->map('GET', '/products/[:productType]', function($productType) {
+    $shopController = new ShopController();
+    $shopController->showProductByType($productType);
+});
+

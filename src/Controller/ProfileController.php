@@ -9,14 +9,19 @@ class ProfileController
     public object $user;
 
     public function __construct(){
-        $this->user = new User();
         session_start();
+        $this->user = new User();
     }
 
     public function showPage(){
-            $user = $_SESSION['user'];
-            $userFromDatabase = $this->user->findOneById($user['id']);
+        if(User::isLoggedIn()){
+            $userId = $_SESSION['user']['id'];
+            $userFromDatabase = $this->user->findOneById($userId);
             require __DIR__ . '/../View/profile.php';
+        } else {
+            header('Location: /my-little-mvc/login');
+            exit();
+        }
     }
 
     public function profile(){

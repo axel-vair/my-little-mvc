@@ -27,12 +27,19 @@ class ShopController
     {
         if (User::isLoggedIn()) {
 
-           $productById = $this->product->findOneById($id);
+            $productById = $this->product->findOneById($id);
             require_once __DIR__ . '/../View/product-show.php';
         } else {
             header('Location: /my-little-mvc/login');
             exit();
         }
+    }
+
+    public function  showProductByType($productType)
+    {
+        $productByType = $this->product->findOneByType($productType);
+        require_once __DIR__ . '/../View/product-type-show.php';
+
     }
 
 

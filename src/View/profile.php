@@ -1,4 +1,5 @@
 <?php
+
 require_once "src/Template/__header.html";
 if(!\App\Model\User::isLoggedIn()){
     header('location: login');

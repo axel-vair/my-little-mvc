@@ -15,6 +15,5 @@ $router->map('POST', '/register', function() {
     $registerController = new AuthenticationController();
     $response = $registerController->register($fullname, $email, $password);
 
-    echo json_encode($response);
 
 }, 'register');

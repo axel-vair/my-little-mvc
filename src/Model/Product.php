@@ -11,7 +11,7 @@ class Product extends AbstractProduct
     public function findPaginated($page)
     {
 
-        $limit = 5;
+        $limit = 4;
         $offset = ($page - 1) * $limit;
         $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
         $totalProducts = $pdo->query("SELECT COUNT(*) FROM product")->fetchColumn();

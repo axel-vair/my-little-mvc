@@ -14,6 +14,4 @@ $router->map('POST', '/register', function() {
 
     $registerController = new AuthenticationController();
     $response = $registerController->register($fullname, $email, $password);
-
-
-}, 'register');
+});

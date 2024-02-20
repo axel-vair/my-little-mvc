@@ -3,3 +3,7 @@
     justify-content: center;
     color: red;
 }
+
+.nav-item {
+    cursor: pointer;
+}

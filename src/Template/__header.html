@@ -17,21 +17,21 @@
                     <a class="nav-link active" href="/my-little-mvc">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shop">Catalogue</a>
+                    <a class="nav-link" href="/my-little-mvc/shop">Catalogue</a>
                 </li>
                 <?php if (isset($_SESSION['user'])) : ?>
                 <li class="nav-item">
-                    <a href="profile" class="nav-link">Mon Compte</a>
+                    <a href="/my-little-mvc/profile" class="nav-link">Mon Compte</a>
                 </li>
                 <li class="nav-item">
-                    <a href="logout" class="btn btn-outline-primary">Déconnexion</a>
+                    <a href="/my-little-mvc/logout" class="btn btn-outline-primary">Déconnexion</a>
                 </li>
                 <?php else : ?>
                 <li class="nav-item">
-                    <a href="register" class="btn btn-outline-primary">M'inscrire</a>
+                    <a href="/my-little-mvc/register" class="btn btn-outline-primary">M'inscrire</a>
                 </li>
                 <li class="nav-item">
-                    <a href="login" class="btn btn-outline-primary">Me connecter</a>
+                    <a href="/my-little-mvc/login" class="btn btn-outline-primary">Me connecter</a>
                 </li>
                 <?php endif; ?>
             </ul>

@@ -1,6 +1,5 @@
 <?php
 require_once "src/Template/__header.html";
-
 ?>
 <!doctype html>
 <html lang="fr">
@@ -16,14 +15,13 @@ require_once "src/Template/__header.html";
 </head>
 <body>
 <div class="d-flex justify-content-center container mt-2 mb-3">
-    <h2><b>Tous les utilisateurs</b></h2>
+    <h2><b>Toutes les informations de l'utilisateur <?= $userById->getFullname() ?></b></h2>
 </div>
 
 <section class="d-flex justify-content-center container mt-2 mb-3">
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">Id</th>
             <th scope="col">Nom complet</th>
             <th scope="col">Email</th>
             <th scope="col">Role</th>
@@ -32,15 +30,18 @@ require_once "src/Template/__header.html";
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($allUsers as $user): ?>
-            <tr>
-                <td>  <a href="show/<?= $user['id']; ?>"><?= $user['id'] ?></a></td>
-                <td>  <?= $user['fullname'] ?></td>
-                <td>  <?= $user['email'] ?></td>
-                <td> <?= $user['role'] ?></td>
-                <td> Supprimer / Modifier</td>
-            </tr>
-        <?php endforeach; ?>
+        <tr>
+            <td><?= $userById->getFullname() ?></td>
+            <td><?= $userById->getEmail() ?></td>
+            <td><?php
+                $roles = $userById->getRole();
+                foreach ($roles as $role) {
+                    echo $role . ' ';
+                }
+                ?>
+            </td>
+            <td> Supprimer / Modifier</td>
+        </tr>
         </tbody>
     </table>
 </section>

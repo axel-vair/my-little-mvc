@@ -19,4 +19,9 @@ class AdminController
         require_once __DIR__ . '/../View/admin.php';
     }
 
+    public function getUserById($id)
+    {
+        $userById = $this->user->findOneById($id);
+        require_once __DIR__ . '/../View/admin-show.php';
+    }
 }

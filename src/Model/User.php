@@ -89,6 +89,15 @@ class User
         }
     }
 
+    public function deleteUser($id)
+    {
+        $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
+        $sql = "DELETE FROM user WHERE id = :id";
+        $statement = $pdo->prepare($sql);
+        $statement->execute(['id' => $id]);
+        return $statement->rowCount() > 0;
+    }
+
     public function update($fullname, $email, $password)
     {
         $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');

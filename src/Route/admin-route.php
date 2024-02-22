@@ -17,7 +17,7 @@ $router->map('GET', '/admin/users/show/[i:id]', function ($id){
 
 $router->map('GET', '/admin/user/edit/[i:id]', function ($id){
     $adminController = new AdminController();
-    $adminController->editUser($id);
+    $adminController->showUser($id);
 });
 
 
@@ -29,4 +29,9 @@ $router->map('POST', '/admin/user/edit/[i:id]', function ($id){
     $role = $_POST['role'];
     $adminController = new AdminController();
     $adminController->editUser($id, $fullname, $email, $password, $role);
+});
+
+$router->map('GET', '/admin/user/delete/[i:id]', function ($id){
+    $adminController = new AdminController();
+    $adminController->deleteUser($id);
 });

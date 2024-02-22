@@ -38,7 +38,9 @@ require_once "src/Template/__header.html";
                 <td>  <?= $user['fullname'] ?></td>
                 <td>  <?= $user['email'] ?></td>
                 <td> <?= $user['role'] ?></td>
-                <td> Supprimer / Modifier</td>
+                <td> <a href="/my-little-mvc/admin/user/delete/<?= $user['id'] ?>">Supprimer</a>
+                    / <a href="/my-little-mvc/admin/user/edit/<?= $user['id'] ?>">Modifier</a>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>

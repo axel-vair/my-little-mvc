@@ -10,7 +10,7 @@ class User
     private ?string $fullname = null;
     private ?string $email = null;
     private ?string $password = null;
-    private ?array $role = [];
+    private ?string $role = null;
 
     public function findOneById($id): ?User
     {
@@ -26,12 +26,14 @@ class User
             $user->setId($userData['id'])
                 ->setFullname($userData['fullname'])
                 ->setEmail($userData['email'])
-                ->setRole([$userData['role']]);
+                ->setPassword($userData['password'])
+                ->setRole($userData['role']);
             return $user;
         } else {
             return null;
         }
     }
+
 
     public function findAll()
     {
@@ -96,7 +98,7 @@ class User
             'fullname' => htmlspecialchars($fullname),
             'email' => htmlspecialchars($email),
             'password' => password_hash($password, PASSWORD_DEFAULT),
-            'id' => $_SESSION['user']['id'], // Utilisez l'identifiant de l'utilisateur connecté
+            'id' => $_SESSION['user']['id'],
 
         ]);
         if ($sql_exe) {
@@ -106,6 +108,23 @@ class User
         }
     }
 
+    public function updateUser($id, $fullname, $email, $password, $role){
+        $pdo = new PDO('mysql:host=localhost:5432;dbname=mvc', 'user', 'pass');
+        $sql = "UPDATE user SET fullname = :fullname, email = :email, password = :password, role = :role WHERE id = :id";
+        $sql_exe = $pdo->prepare($sql);
+        $sql_exe->execute([
+            'id' => $id,
+            'fullname' => htmlspecialchars($fullname),
+            'email' => htmlspecialchars($email),
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'role' => htmlspecialchars($role),
+        ]);
+        if ($sql_exe) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public static function isLoggedIn(){
         return $_SESSION['user'];
     }
@@ -184,12 +203,11 @@ class User
         return $this;
     }
 
-    public function getRole(): ?array
-    {
+    public function getRole(): ?string {
         return $this->role;
     }
 
-    public function setRole(?array $role): User
+    public function setRole(?string $role): User
     {
         $this->role = $role;
         return $this;

@@ -33,13 +33,8 @@ require_once "src/Template/__header.html";
         <tr>
             <td><?= $userById->getFullname() ?></td>
             <td><?= $userById->getEmail() ?></td>
-            <td><?php
-                $roles = $userById->getRole();
-                foreach ($roles as $role) {
-                    echo $role . ' ';
-                }
-                ?>
-            </td>
+            <td><?= $userById->getRole() ?></td>
+
             <td> Supprimer / Modifier</td>
         </tr>
         </tbody>

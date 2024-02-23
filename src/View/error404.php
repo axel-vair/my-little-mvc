@@ -1,5 +1,6 @@
 <?php
-require_once "/Users/axel/Sites/my-little-mvc/src/Template/__header.html";
+require_once "src/Template/__header.html";
+require_once "src/View/error404.php";
 
 ?>
 <!doctype html>

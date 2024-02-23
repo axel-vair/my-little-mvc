@@ -11,6 +11,7 @@ class AdminController
     public function __construct()
     {
         $this->user = new User();
+        session_start();
     }
 
     public function getAllUsers()

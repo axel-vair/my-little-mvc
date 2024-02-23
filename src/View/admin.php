@@ -1,6 +1,9 @@
 <?php
 require_once "src/Template/__header.html";
-
+if($_SESSION['user']['role'] !== "admin")
+{
+    header('location: /my-little-mvc/shop');
+}
 ?>
 <!doctype html>
 <html lang="fr">

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +34,8 @@
                 <li class="nav-item">
                     <a href="/my-little-mvc/login" class="btn btn-outline-primary">Me connecter</a>
                 </li>
+                <?php endif; ?>
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === "admin") : ?>
                 <li class="nav-item">
                     <a href="/my-little-mvc/admin/users/list" class="btn btn-primary">Admin</a>
                 </li>

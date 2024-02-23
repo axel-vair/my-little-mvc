@@ -1,3 +1,8 @@
+<?php
+if (empty($productPaginate['products'])) {
+    header('location: /my-little-mvc/error');
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>

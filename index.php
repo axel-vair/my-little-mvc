@@ -18,6 +18,8 @@ include __DIR__ . '/src/Route/register-route.php';
 include __DIR__ . '/src/Route/login-route.php';
 include __DIR__ . '/src/Route/profile-route.php';
 include __DIR__ . '/src/Route/logout-route.php';
+include __DIR__ . '/src/Route/admin-route.php';
+
 
 
 

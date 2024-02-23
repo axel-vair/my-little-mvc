@@ -40,7 +40,7 @@ if(!\App\Model\User::isLoggedIn()){
 
         <div class="form-group">
             <label for="password"  class="form-label mt-4"> Mot de passe :</label>
-            <input type="password" name="password" class="form-control" value="">
+            <input type="password" name="password" class="form-control" value="<?= $userFromDatabase->getPassword()?>">
 
         </div>
 

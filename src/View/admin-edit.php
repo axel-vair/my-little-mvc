@@ -2,8 +2,7 @@
 require_once "src/Template/__header.html";
 if($_SESSION['user']['role'] !== "admin")
 {
-    header('location: /my-little-mvc/shop');
-}
+    header('location: /my-little-mvc/error');}
 ?>
 <!doctype html>
 <html lang="fr">
